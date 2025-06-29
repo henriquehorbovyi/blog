@@ -24,13 +24,13 @@ class BlogPostViewModel(
 
     override fun onAction(action: BlogPostAction) {
         when (action) {
-            is BlogPostAction.BlogPostClicked -> navigateToPostDetail(action.id)
+            is BlogPostAction.BlogPostClicked -> navigateToPostDetail(action.fileName)
         }
     }
 
-    private fun navigateToPostDetail(id: String) {
+    private fun navigateToPostDetail(fileName: String) {
         viewModelScope.launch {
-            navigation.emit(BlogPostNavigationEvent.OpenBlogPost(id))
+            navigation.emit(BlogPostNavigationEvent.OpenBlogPost(fileName))
         }
     }
 }

@@ -12,9 +12,9 @@ import dev.henriquehorbovyi.blog.theme.BlogTheme
 
 @Composable
 fun ProgressIndicator(modifier: Modifier = Modifier) {
-    Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         CircularProgressIndicator(
-            modifier = modifier.padding(8.dp),
+            modifier = Modifier.padding(8.dp),
             color = BlogTheme.colorScheme.primary,
             strokeWidth = 2.dp,
             trackColor = BlogTheme.colorScheme.surfaceVariant,

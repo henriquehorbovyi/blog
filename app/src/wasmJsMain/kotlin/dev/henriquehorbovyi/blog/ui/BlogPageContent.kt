@@ -10,7 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import dev.henriquehorbovyi.blog.theme.BlogTheme
 
-
 @Composable
 fun BlogPageContent(
     blogPostsContent: @Composable () -> Unit

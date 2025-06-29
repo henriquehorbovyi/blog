@@ -17,6 +17,8 @@ pluginManagement {
 
 dependencyResolutionManagement {
     repositories {
+        maven("https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental")
+
         google {
             mavenContent {
                 includeGroupAndSubgroups("androidx")

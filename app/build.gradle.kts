@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 compose.resources {
@@ -51,6 +52,13 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation("org.jetbrains.compose.material3:material3-window-size-class:1.7.3")
+            // implementation(libs.kotlin.coroutines.core)
+            implementation(libs.bundles.ktor.common)
+
+            // implementation(libs.ktor.client.content.negotiation)
+            // implementation(libs.ktor.serialization.kotlinx.json)
+            implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.0-beta03")
+
         }
 
         commonTest.dependencies {

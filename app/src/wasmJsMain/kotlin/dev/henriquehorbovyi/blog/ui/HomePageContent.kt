@@ -46,6 +46,3 @@ fun HomePageContent(
         blogPostsContent()
     }
 }
-
-
-

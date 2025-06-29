@@ -63,7 +63,7 @@ fun Header(
                         ),
                         modifier = Modifier
                             .clickable(
-                                onClick = { onPageChange(Page.HOME) },
+                                onClick = { onPageChange(Page.Home) },
                                 indication = null,
                                 interactionSource = null,
                             ),
@@ -84,7 +84,7 @@ fun Header(
 
                         modifier = Modifier
                             .clickable(
-                                onClick = { onPageChange(Page.BLOG) },
+                                onClick = { onPageChange(Page.Blog) },
                                 indication = null,
                                 interactionSource = null,
                             )

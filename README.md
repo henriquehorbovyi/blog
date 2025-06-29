@@ -16,3 +16,9 @@ We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public S
 If you face any issues, please report them on [YouTrack](https://youtrack.jetbrains.com/newIssue?project=CMP).
 
 You can open the web application by running the `:composeApp:wasmJsBrowserDevelopmentRun` Gradle task.
+
+
+
+- References
+Awesome article to setup ktor client on wasm module
+https://medium.com/@ichchhamoktan07/adding-ktor-to-my-kotlin-multiplatform-project-for-web-web-assembly-or-wasm-4f6adad39b73
