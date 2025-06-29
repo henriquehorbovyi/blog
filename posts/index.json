@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "My First Post",
+      "publishedAt": "2025-06-27",
+      "file": "demo-blog-post.md"
+    },
+    {
+      "id": 2, 
+      "title": "Another Great Post",
+      "publishedAt": "2025-07-27",
+      "file": "second-post.md"
+    }
+  ]
+}
