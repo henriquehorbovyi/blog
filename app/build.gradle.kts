@@ -21,10 +21,6 @@ compose.resources {
 
 }
 kotlin {
-    js(IR) {
-        browser()
-        binaries.executable()
-    }
 
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {

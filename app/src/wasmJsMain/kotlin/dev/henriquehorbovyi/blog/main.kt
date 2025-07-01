@@ -23,7 +23,6 @@ fun main() {
         val postsViewModel = BlogPostsViewModel(repository)
         val postDetailsViewModel = PostDetailViewModel(repository)
         App(
-
             startDestination = Page.urlToPage(document.URL),
             onNavHostReady = { navController ->
                 window.bindToNavigation(

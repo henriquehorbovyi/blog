@@ -23,12 +23,11 @@ sealed class Page(val urlRoute: String) {
                 route == "blog" -> Page.Blog
                 blogPostRegex.matches(route) -> { // Use the regex
                     val file = route.substringAfter("blog/")
-                    Page.PostDetail(file)
+                    PostDetail(file)
                 }
 
-                else -> Page.Home
+                else -> Home
             }
-            println("Page: $page for route $route")
             return page
         }
     }

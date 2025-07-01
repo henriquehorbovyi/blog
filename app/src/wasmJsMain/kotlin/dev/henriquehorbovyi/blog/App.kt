@@ -99,7 +99,6 @@ fun App(
             loadedFonts++
 
             if (loadedFonts == fonts.size + 1) {
-                println("Emoji font preloaded successfully!")
                 appState.updateIsUiLoading(false)
             }
         } catch (e: Exception) {
@@ -151,16 +150,19 @@ fun Content(
     onNavHostReady: suspend (NavController) -> Unit,
 ) {
 
-    LazyColumn (
+    LazyColumn(
         modifier = modifier.fillMaxSize()
     ) {
         item {
             Row {
-                val weightModifier = if (appState.shouldAddSideSpace) Modifier.weight(0.5f) else Modifier
-                if (appState.shouldAddSideSpace) { Spacer(Modifier.weight(0.25f)) }
+                val weightModifier =
+                    if (appState.shouldAddSideSpace) Modifier.weight(0.5f) else Modifier
+                if (appState.shouldAddSideSpace) {
+                    Spacer(Modifier.weight(0.25f))
+                }
                 Column(modifier = weightModifier) {
                     Header(
-                        modifier = Modifier.padding(top = 32.dp,bottom = 64.dp),
+                        modifier = Modifier.padding(top = 32.dp, bottom = 64.dp),
                         isDarkMode = appState.isDarkMode,
                         onThemeToggle = { appState.toggleUiMode() },
                         onPageChange = { onEvent(PostAction.PageChanged(it)) }
@@ -192,28 +194,36 @@ fun Content(
                                 composable<Blog> {
                                     BlogPageContent(blogPostsContent = {
                                         BlogPosts(
-                                             postsUiState = uiState,
-                                             onPostClicked = { file ->
-                                                 onEvent(PostAction.BlogPostClicked(file))
-                                             }
-                                         )
+                                            postsUiState = uiState,
+                                            onPostClicked = { file ->
+                                                onEvent(PostAction.BlogPostClicked(file))
+                                            }
+                                        )
                                     })
                                 }
 
                                 composable<PostDetail> { backStackEntry ->
                                     val file = backStackEntry.toRoute<PostDetail>().file
                                     PostDetailPage(
-                                         fileName = file,
-                                         uiState = postDetailUiState,
-                                         loadPostContent = { onPostDetailEvent(PostDetailAction.LoadPostDetail(it)) },
-                                     )
+                                        fileName = file,
+                                        uiState = postDetailUiState,
+                                        loadPostContent = {
+                                            onPostDetailEvent(
+                                                PostDetailAction.LoadPostDetail(
+                                                    it
+                                                )
+                                            )
+                                        },
+                                    )
                                 }
                             }
                         }
                     }
                     Footer(modifier = Modifier.padding(top = 64.dp, bottom = 32.dp))
                 }
-                if (appState.shouldAddSideSpace) { Spacer(Modifier.weight(0.25f)) }
+                if (appState.shouldAddSideSpace) {
+                    Spacer(Modifier.weight(0.25f))
+                }
             }
         }
     }
