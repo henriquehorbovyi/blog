@@ -3,6 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - 'posts/*.md'              # Ignore direct markdown changes
+      - 'docs/**'                 # Ignore documentation
+      - '*.md'                    # Ignore any other markdown files
   workflow_dispatch:
 
 permissions:

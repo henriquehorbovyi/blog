@@ -6,8 +6,6 @@ on:
       - 'posts/*.md'        # Triggers when any .md file in posts/ is added/modified
     branches:
       - main               # Only on main branch
-  workflow_dispatch:       # Allows manual trigger from GitHub UI
-
 permissions:
   contents: write          # Needed to push changes back to repo
 
