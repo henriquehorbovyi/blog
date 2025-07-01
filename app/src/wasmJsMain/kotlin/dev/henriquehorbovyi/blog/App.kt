@@ -151,7 +151,9 @@ fun Content(
 ) {
 
     LazyColumn(
-        modifier = modifier.fillMaxSize()
+        modifier = modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp)
     ) {
         item {
             Row {
