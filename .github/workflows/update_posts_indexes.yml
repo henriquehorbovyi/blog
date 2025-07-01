@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}  # Personal access token to trigger other workflows
+
 
       - name: Make script executable
         run: chmod +x ./scripts/generate-posts-index.sh
@@ -39,7 +42,7 @@ jobs:
             echo "No changes to commit"
           else
             # Commit and push
-            git commit -m "🤖 Auto-update posts index [skip ci]"
+            git commit -m "🤖 Auto-update posts index"
             git push
             echo "Index updated and pushed!"
           fi
