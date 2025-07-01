@@ -32,7 +32,7 @@ jobs:
         run: |
           # Configure git (required for commits)
           git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.name "Actions Bot 🤖"
             
           # Add the updated index file
           git add posts/index.json
