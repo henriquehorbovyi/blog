@@ -8,25 +8,25 @@ set -e  # Exit on any error
 echo "Generating posts index... 📝"
 
 # Create posts directory if it doesn't exist
-mkdir -p ../posts
+mkdir -p ./posts
 
 # Create the beginning of JSON file
-cat > ../posts/index.json << 'EOF'
+cat > ./posts/index.json << 'EOF'
 {
   "posts": [
 EOF
 
 # Check if there are any .md files
-if ! ls ../posts/*.md 1> /dev/null 2>&1; then
+if ! ls ./posts/*.md 1> /dev/null 2>&1; then
     echo "⚠️  No markdown files found in posts directory"
     # Close JSON with empty array
-    echo '  ]' >> ../posts/index.json
-    echo '}' >> ../posts/index.json
+    echo '  ]' >> ./posts/index.json
+    echo '}' >> ./posts/index.json
     exit 0
 fi
 
 # Count total markdown files
-total=$(ls ../posts/*.md 2>/dev/null | wc -l)
+total=$(ls ./posts/*.md 2>/dev/null | wc -l)
 count=0
 
 echo "📝 Found $total markdown files"
@@ -62,7 +62,7 @@ for file in ../posts/*.md; do
     echo "  📄 Processing: $filename"
 
     # Add JSON entry
-    cat >> ../posts/index.json << EOF
+    cat >> ./posts/index.json << EOF
     {
       "id":  "$(basename "$file")_$date",
       "title": "$title",
@@ -79,7 +79,7 @@ EOF
 done
 
 # Close JSON structure
-cat >> ../posts/index.json << 'EOF'
+cat >> ./posts/index.json << 'EOF'
   ]
 }
 EOF
@@ -90,5 +90,5 @@ echo "📋 Index file created at: posts/index.json"
 # Show the result (optional, for debugging)
 if [ "${SHOW_OUTPUT:-false}" = "true" ]; then
     echo "📄 Generated content:"
-    cat ../posts/index.json
+    cat ./posts/index.json
 fi
