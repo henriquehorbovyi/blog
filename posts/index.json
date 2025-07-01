@@ -5,6 +5,12 @@
       "title": "Demo blog post",
       "publishedAt": "2025-07-01",
       "file": "demo-blog-post.md"
+    },
+    {
+      "id":  "second-post.md_2025-07-01",
+      "title": "This is a test",
+      "publishedAt": "2025-07-01",
+      "file": "second-post.md"
     }
   ]
 }
