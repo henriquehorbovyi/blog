@@ -32,7 +32,7 @@ count=0
 echo "📝 Found $total markdown files"
 
 # Loop through all markdown files in posts directory
-for file in ../posts/*.md; do
+for file in ./posts/*.md; do
     # Skip if file doesn't exist (shouldn't happen, but just in case)
     [ ! -f "$file" ] && continue
 
@@ -72,9 +72,9 @@ EOF
 
     # Add comma if not the last item
     if [ $count -lt $total ]; then
-        echo "    }," >> ../posts/index.json
+        echo "    }," >> ./posts/index.json
     else
-        echo "    }" >> ../posts/index.json
+        echo "    }" >> ./posts/index.json
     fi
 done
 
