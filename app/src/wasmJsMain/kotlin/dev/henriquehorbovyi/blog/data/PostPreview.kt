@@ -9,7 +9,7 @@ data class PostsResponse(
 
 @Serializable
 data class PostPreview(
-    val id: Int = 0,
+    val id: String,
     val title: String,
     val publishedAt: String,
     val file: String
@@ -17,7 +17,7 @@ data class PostPreview(
 
 @Serializable
 data class PostContent(
-    val id: Int = 0,
+    val id: String,
     val title: String,
     val content: String,
     val publishedAt: String

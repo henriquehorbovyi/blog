@@ -64,9 +64,9 @@ for file in ../posts/*.md; do
     # Add JSON entry
     cat >> ../posts/index.json << EOF
     {
-      "id": "$filename",
+      "id":  "$(basename "$file")_$date",
       "title": "$title",
-      "date": "$date",
+      "publishedAt": "$date",
       "file": "$(basename "$file")"
 EOF
 

@@ -1,9 +1,9 @@
 {
   "posts": [
     {
-      "id": "demo-blog-post",
+      "id":  "demo-blog-post.md_2025-07-01",
       "title": "Demo blog post",
-      "date": "2025-07-01",
+      "publishedAt": "2025-07-01",
       "file": "demo-blog-post.md"
     }
   ]

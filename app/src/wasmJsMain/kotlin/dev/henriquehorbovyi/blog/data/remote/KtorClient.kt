@@ -45,7 +45,7 @@ class BlogApiClient {
         val content = response.bodyAsText()
         // TODO, think about a way to add id, title, publishedAt or PostContent carries only the content itself
         return PostContent(
-            id = 1,
+            id = "",
             title = "",
             content = content,
             publishedAt = "Jun 29"
