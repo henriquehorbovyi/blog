@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ release ]
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -27,11 +27,14 @@ jobs:
         uses: gradle/gradle-build-action@v2
         
       - name: Building... 🔨
-        run: ./gradlew wasmJsBrowserDistribution
-        
+        run: |
+          ./gradlew wasmJsBrowserDistribution
+          cp app/src/wasmJsMain/resources/styles.css app/build/dist/wasmJs/productionExecutable/styles.css
+          touch app/build/dist/wasmJs/productionExecutable/.nojekyll
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
