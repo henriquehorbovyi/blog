@@ -1,12 +1,6 @@
 {
   "posts": [
     {
-      "id":  "another-post-pipe-test.md_2025-07-01",
-      "title": "Hello, this is a test 👋 ",
-      "publishedAt": "2025-07-01",
-      "file": "another-post-pipe-test.md"
-    },
-    {
       "id":  "demo-blog-post.md_2025-07-01",
       "title": "Demo blog post",
       "publishedAt": "2025-07-01",
