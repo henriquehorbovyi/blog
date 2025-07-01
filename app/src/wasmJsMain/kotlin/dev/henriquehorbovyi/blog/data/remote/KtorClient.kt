@@ -17,7 +17,7 @@ import kotlinx.serialization.json.Json
 class BlogApiClient {
 
     private val postsEndpoint =
-        "https://raw.githubusercontent.com/henriquehorbovyi/blog/main/posts/"
+        "https://raw.githubusercontent.com/henriquehorbovyi/blog/refs/heads/main/posts/"
 
     private val httpClient = HttpClient {
         install(ContentNegotiation) {
