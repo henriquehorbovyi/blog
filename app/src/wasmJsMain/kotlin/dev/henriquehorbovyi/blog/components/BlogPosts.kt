@@ -13,45 +13,43 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import dev.henriquehorbovyi.blog.data.BlogPostPreview
+import dev.henriquehorbovyi.blog.data.PostPreview
 import dev.henriquehorbovyi.blog.theme.BlogTheme
-import dev.henriquehorbovyi.blog.viewmodel.BlogPostsUiState
+import dev.henriquehorbovyi.blog.viewmodel.posts.PostsUiState
 
 @Composable
 fun BlogPosts(
     modifier: Modifier = Modifier,
-    blogPostsUiState: BlogPostsUiState,
+    postsUiState: PostsUiState,
     onPostClicked: (String) -> Unit
 ) {
-    when (blogPostsUiState) {
-        is BlogPostsUiState.Content -> Content(
+    when (postsUiState) {
+        is PostsUiState.Content -> Content(
             modifier = modifier,
-            posts = blogPostsUiState.posts,
+            posts = postsUiState.posts,
             onPostClicked = onPostClicked
         )
-        is BlogPostsUiState.Error -> ErrorState(message = blogPostsUiState.message)
-        BlogPostsUiState.Loading -> ProgressIndicator()
+
+        PostsUiState.Loading -> ProgressIndicator()
+        is PostsUiState.Error -> {}
     }
 }
 
 @Composable
 private fun Content(
-    posts: List<BlogPostPreview>,
+    posts: List<PostPreview>,
     modifier: Modifier = Modifier,
     onPostClicked: (String) -> Unit
 ) {
     if (posts.isEmpty()) {
         EmptyState(modifier = modifier)
     } else {
-        LazyColumn(modifier = modifier) {
-            items(posts) {
-                BlogPostItem(
-                    blogPostPreview = it,
-                    modifier = Modifier.padding(bottom = 16.dp),
-                    onPostClicked = onPostClicked
-                )
-
-            }
+        repeat(posts.size) {
+            BlogPostItem(
+                postPreview = posts[it],
+                modifier = Modifier.padding(bottom = 16.dp),
+                onPostClicked = onPostClicked
+            )
         }
     }
 }
@@ -59,22 +57,22 @@ private fun Content(
 @Composable
 private fun BlogPostItem(
     modifier: Modifier = Modifier,
-    blogPostPreview: BlogPostPreview,
+    postPreview: PostPreview,
     onPostClicked: (String) -> Unit
 ) {
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .clickable { onPostClicked(blogPostPreview.file) },
+            .clickable { onPostClicked(postPreview.file) },
         verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
         Text(
-            text = blogPostPreview.publishedAt,
+            text = postPreview.publishedAt,
             style = BlogTheme.typography.bodyMedium,
             color = BlogTheme.colorScheme.secondary
         )
         Text(
-            text = blogPostPreview.title,
+            text = postPreview.title,
             style = BlogTheme.typography.bodyLarge,
             color = BlogTheme.colorScheme.onBackground
         )

@@ -1,9 +1,9 @@
 package dev.henriquehorbovyi.blog.data.repository
 
-import dev.henriquehorbovyi.blog.data.BlogPostContent
-import dev.henriquehorbovyi.blog.data.BlogPostPreview
+import dev.henriquehorbovyi.blog.data.PostContent
+import dev.henriquehorbovyi.blog.data.PostPreview
 
 interface IBlogRepository {
-    suspend fun getPosts(): List<BlogPostPreview>
-    suspend fun getPostByFileName(fileName: String): BlogPostContent
+    suspend fun getPosts(): List<PostPreview>
+    suspend fun getPostByFileName(fileName: String): PostContent
 }

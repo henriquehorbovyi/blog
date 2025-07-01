@@ -7,7 +7,8 @@ import androidx.navigation.bindToNavigation
 import dev.henriquehorbovyi.blog.data.repository.BlogRepository
 import dev.henriquehorbovyi.blog.navigation.Page
 import dev.henriquehorbovyi.blog.navigation.mapToUrlRoute
-import dev.henriquehorbovyi.blog.viewmodel.BlogPostViewModel
+import dev.henriquehorbovyi.blog.viewmodel.postdetails.PostDetailViewModel
+import dev.henriquehorbovyi.blog.viewmodel.posts.BlogPostsViewModel
 import kotlinx.browser.document
 import kotlinx.browser.window
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -19,15 +20,19 @@ import kotlinx.serialization.ExperimentalSerializationApi
 fun main() {
     ComposeViewport(document.body!!) {
         val repository = BlogRepository()
-        val viewModel = BlogPostViewModel(repository)
+        val postsViewModel = BlogPostsViewModel(repository)
+        val postDetailsViewModel = PostDetailViewModel(repository)
         App(
-            blogPostViewModel = viewModel,
+
+            startDestination = Page.urlToPage(document.URL),
             onNavHostReady = { navController ->
                 window.bindToNavigation(
                     navController = navController,
-                    getBackStackEntryRoute = { entry -> entry.mapToUrlRoute() }
+                    getBackStackEntryRoute = { it.mapToUrlRoute() }
                 )
-            }
+            },
+            postsViewModel = postsViewModel,
+            postDetailViewModel = postDetailsViewModel
         )
     }
 }

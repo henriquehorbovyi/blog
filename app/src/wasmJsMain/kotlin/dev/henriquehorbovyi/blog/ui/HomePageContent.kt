@@ -13,6 +13,7 @@ import dev.henriquehorbovyi.blog.theme.BlogTheme
 
 @Composable
 fun HomePageContent(
+    modifier: Modifier = Modifier,
     blogPostsContent: @Composable () -> Unit
 ) {
     val message = remember {
@@ -24,12 +25,12 @@ fun HomePageContent(
     }
 
     Column(
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier
     ) {
         Text(
             "Hello \uD83D\uDC4B",
-            style = BlogTheme.typography.headlineMedium,
-            color = BlogTheme.colorScheme.onBackground
+            style = BlogTheme.typography.headlineLarge,
+            color = BlogTheme.colorScheme.onSurface,
         )
 
         Spacer(Modifier.height(32.dp))

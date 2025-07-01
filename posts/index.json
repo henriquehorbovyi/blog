@@ -8,7 +8,7 @@
     },
     {
       "id": 2, 
-      "title": "Another Great Post",
+      "title": "This post does not exist in posts directory",
       "publishedAt": "2025-07-27",
       "file": "second-post.md"
     }

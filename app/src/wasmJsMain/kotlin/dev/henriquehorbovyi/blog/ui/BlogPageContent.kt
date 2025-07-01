@@ -20,8 +20,8 @@ fun BlogPageContent(
     ) {
         Text(
             "My Blog",
-            style = BlogTheme.typography.headlineMedium,
-            color = BlogTheme.colorScheme.onBackground
+            style = BlogTheme.typography.headlineLarge,
+            color = BlogTheme.colorScheme.onSurface,
         )
 
         Spacer(Modifier.height(32.dp))

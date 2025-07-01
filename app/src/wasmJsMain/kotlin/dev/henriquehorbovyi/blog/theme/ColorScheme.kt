@@ -6,7 +6,7 @@ import androidx.compose.ui.graphics.Color
 
 // Simple Black and White Light Theme
 internal val LightAppColors = lightColorScheme(
-    primary = Color.Black,
+    primary = Color(0xFF101010),
     onPrimary = Color.White,
     secondary = Color(0xFFA8A29D),
     onSecondary = Color.White,
@@ -23,17 +23,17 @@ internal val LightAppColors = lightColorScheme(
 
 // Simple Black and White Dark Theme
 internal val DarkAppColors = darkColorScheme(
-    primary = Color.White,
+    primary = Color(0xFFF1F1F1),
     onPrimary = Color.Black,
-    secondary = Color(0xFFA8A29D),
+    secondary = Color(0xFF666666),
     onSecondary = Color.Black,
-    background = Color(0xFF121212),
-    onBackground = Color.White,
+    background = Color(0xFF0f0f0f),
+    onBackground = Color(0xFFcccccc),
     surface = Color.Black,
     onSurface = Color.White,
     error = Color(0xFFCF6679),
     onError = Color.Black,
     surfaceVariant = Color(0xFF1E1E1E),
     onSurfaceVariant = Color.White,
-    outline = Color(0xFF3C3C3C)
+    outline = Color(0xFF3C3C3C),
 )

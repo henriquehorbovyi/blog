@@ -5,30 +5,45 @@ import androidx.navigation.toRoute
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 
-sealed class Page {
+@Serializable
+sealed class Page(val urlRoute: String) {
     @Serializable
-    object Home : Page()
-
+    object Home : Page("#home")
     @Serializable
-    object Blog : Page()
-
+    object Blog : Page("#blog")
     @Serializable
-    data class BlogPost(var file: String) : Page()
+    data class PostDetail(var file: String) : Page("#blog/$file")
 
+    companion object {
+        fun urlToPage(url: String): Page {
+            val route = url.ifEmpty { Page.Home.urlRoute }.substringAfter("#")
+            val blogPostRegex = Regex("^blog/.+")
+            val page =  when {
+                route == "home" -> Page.Home
+                route == "blog" -> Page.Blog
+                blogPostRegex.matches(route) -> { // Use the regex
+                    val file = route.substringAfter("blog/")
+                    Page.PostDetail(file)
+                }
 
+                else -> Page.Home
+            }
+            println("Page: $page for route $route")
+            return page
+        }
+    }
 }
 
 @OptIn(ExperimentalSerializationApi::class)
 fun NavBackStackEntry.mapToUrlRoute(): String {
     val route = destination.route.orEmpty()
     return when {
-        route.startsWith(Page.Home.serializer().descriptor.serialName) -> "#home"
-        route.startsWith(Page.Blog.serializer().descriptor.serialName) -> "#blog"
-        route.startsWith(Page.BlogPost.serializer().descriptor.serialName) -> {
-            val args = toRoute<Page.BlogPost>()
-            "#blog_post_${args.file}"
+        route.startsWith(Page.Home.serializer().descriptor.serialName) -> Page.Home.urlRoute
+        route.startsWith(Page.Blog.serializer().descriptor.serialName) -> Page.Blog.urlRoute
+        route.startsWith(Page.PostDetail.serializer().descriptor.serialName) -> {
+            Page.PostDetail(toRoute<Page.PostDetail>().file).urlRoute
         }
-        // Doesn't set a URL fragment for all other routes
-        else -> ""
+
+        else -> Page.Home.urlRoute
     }
 }

@@ -35,6 +35,7 @@ import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun Header(
+    modifier: Modifier = Modifier,
     isDarkMode: Boolean,
     onThemeToggle: () -> Unit,
     onPageChange: (Page) -> Unit
@@ -46,7 +47,7 @@ fun Header(
     var isSwitchThemeHovered by remember { mutableStateOf(false) }
 
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
