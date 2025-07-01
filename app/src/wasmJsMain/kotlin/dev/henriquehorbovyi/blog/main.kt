@@ -5,6 +5,7 @@ import androidx.compose.ui.window.ComposeViewport
 import androidx.navigation.ExperimentalBrowserHistoryApi
 import androidx.navigation.bindToNavigation
 import dev.henriquehorbovyi.blog.data.repository.BlogRepository
+import dev.henriquehorbovyi.blog.navigation.ExternalNavigator
 import dev.henriquehorbovyi.blog.navigation.Page
 import dev.henriquehorbovyi.blog.navigation.mapToUrlRoute
 import dev.henriquehorbovyi.blog.viewmodel.postdetails.PostDetailViewModel
@@ -20,7 +21,8 @@ import kotlinx.serialization.ExperimentalSerializationApi
 fun main() {
     ComposeViewport(document.body!!) {
         val repository = BlogRepository()
-        val postsViewModel = BlogPostsViewModel(repository)
+        val externalNavigator = ExternalNavigator(window)
+        val postsViewModel = BlogPostsViewModel(repository, externalNavigator)
         val postDetailsViewModel = PostDetailViewModel(repository)
         App(
             startDestination = Page.urlToPage(document.URL),

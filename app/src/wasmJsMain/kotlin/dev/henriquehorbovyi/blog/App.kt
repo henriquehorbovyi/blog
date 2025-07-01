@@ -47,8 +47,8 @@ import dev.henriquehorbovyi.blog.theme.BlogTheme
 import dev.henriquehorbovyi.blog.ui.BlogPageContent
 import dev.henriquehorbovyi.blog.ui.HomePageContent
 import dev.henriquehorbovyi.blog.ui.PostDetailPage
-import dev.henriquehorbovyi.blog.viewmodel.IPostsViewModel
-import dev.henriquehorbovyi.blog.viewmodel.PostAction
+import dev.henriquehorbovyi.blog.viewmodel.posts.IPostsViewModel
+import dev.henriquehorbovyi.blog.viewmodel.posts.PostAction
 import dev.henriquehorbovyi.blog.viewmodel.PostNavigationEvent
 import dev.henriquehorbovyi.blog.viewmodel.postdetails.IPostDetailViewModel
 import dev.henriquehorbovyi.blog.viewmodel.postdetails.PostDetailAction
@@ -221,7 +221,12 @@ fun Content(
                             }
                         }
                     }
-                    Footer(modifier = Modifier.padding(top = 64.dp, bottom = 32.dp))
+                    Footer(
+                        modifier = Modifier.padding(top = 64.dp, bottom = 32.dp),
+                        onNavigateToExternalLink = { url ->
+                            onEvent(PostAction.OpenExternalLink(url))
+                        }
+                    )
                 }
                 if (appState.shouldAddSideSpace) {
                     Spacer(Modifier.weight(0.25f))

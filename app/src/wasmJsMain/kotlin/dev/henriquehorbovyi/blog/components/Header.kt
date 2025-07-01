@@ -25,6 +25,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.input.pointer.DummyPointerIcon
+import androidx.compose.ui.input.pointer.PointerIcon
+import androidx.compose.ui.input.pointer.PointerInputFilter
+import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.unit.dp
 import composeresources.generated.resources.Res
 import composeresources.generated.resources.ic_moon
@@ -119,7 +123,7 @@ fun Header(
 fun HoverBox(
     content: @Composable () -> Unit,
     modifier: Modifier = Modifier,
-    onHovered: (Boolean) -> Unit = {}
+    onHovered: (Boolean) -> Unit = {},
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val isHovered by interactionSource.collectIsHoveredAsState()
@@ -128,7 +132,7 @@ fun HoverBox(
         onHovered(isHovered)
     }
 
-    Box(modifier = modifier.hoverable(interactionSource)) {
+    Box(modifier = modifier.hoverable(interactionSource).pointerHoverIcon(PointerIcon.Hand, true)) {
         content()
     }
 }

@@ -12,6 +12,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.pointer.PointerIcon
+import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.unit.dp
 import dev.henriquehorbovyi.blog.data.PostPreview
 import dev.henriquehorbovyi.blog.theme.BlogTheme
@@ -63,7 +65,8 @@ private fun BlogPostItem(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .clickable { onPostClicked(postPreview.file) },
+            .clickable { onPostClicked(postPreview.file) }
+            .pointerHoverIcon(PointerIcon.Hand, overrideDescendants = true),
         verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
         Text(
