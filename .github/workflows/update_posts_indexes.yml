@@ -1,0 +1,47 @@
+name: Update Posts Index
+
+on:
+  push:
+    paths:
+      - 'posts/*.md'        # Triggers when any .md file in posts/ is added/modified
+    branches:
+      - main               # Only on main branch
+  workflow_dispatch:       # Allows manual trigger from GitHub UI
+
+permissions:
+  contents: write          # Needed to push changes back to repo
+
+jobs:
+  update-index:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Make script executable
+        run: chmod +x ./scripts/generate-posts-index.sh
+
+      - name: Generate posts index
+        run: ./scripts/generate-posts-index.sh
+        env:
+          SHOW_OUTPUT: true  # Optional: shows generated JSON in logs
+
+      - name: Commiting & Pushing
+        run: |
+          # Configure git (required for commits)
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+            
+          # Add the updated index file
+          git add posts/index.json
+            
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            # Commit and push
+            git commit -m "🤖 Auto-update posts index [skip ci]"
+            git push
+            echo "Index updated and pushed!"
+          fi

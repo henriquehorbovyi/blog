@@ -23,7 +23,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           
-      - name: Setup Gradle
+      - name: Setting Gradle
         uses: gradle/gradle-build-action@v2
         
       - name: Building... 🔨
@@ -32,14 +32,14 @@ jobs:
           cp app/src/wasmJsMain/resources/styles.css app/build/dist/wasmJs/productionExecutable/styles.css
           touch app/build/dist/wasmJs/productionExecutable/.nojekyll
 
-      - name: Setup Pages
+      - name: Configuring Github Pages
         uses: actions/configure-pages@v4
 
-      - name: Upload artifact
+      - name: Uploading artifacts
         uses: actions/upload-pages-artifact@v3
         with:
           path: 'app/build/dist/wasmJs/productionExecutable'
           
-      - name: Deploy to GitHub Pages
+      - name: Deploying 🚀
         id: deployment
         uses: actions/deploy-pages@v4

@@ -1,16 +1,10 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "My First Post",
-      "publishedAt": "2025-06-27",
+      "id": "demo-blog-post",
+      "title": "Demo blog post",
+      "date": "2025-07-01",
       "file": "demo-blog-post.md"
-    },
-    {
-      "id": 2, 
-      "title": "This post does not exist in posts directory",
-      "publishedAt": "2025-07-27",
-      "file": "second-post.md"
     }
   ]
 }
