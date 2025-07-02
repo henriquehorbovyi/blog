@@ -17,11 +17,22 @@ Now I want to test couple things:
 - Code snippets
 - italic
 
+#### Hello from Kotlin
 ```kotlin
 fun main() {
-    println("ruuuun!")
+    println("Hello, world!")
 }
 ```
+
+#### Hello from Compose
+```kotlin
+@Composable
+fun MessageCard(name: String) {
+    Text(text = "Hello $name!")
+}
+```
+
+
 Ok, that seems to _cool_
 
 **Tags:** #coding #life
