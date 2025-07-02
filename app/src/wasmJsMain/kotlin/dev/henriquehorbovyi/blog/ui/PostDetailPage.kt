@@ -6,12 +6,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.mikepenz.markdown.coil3.Coil3ImageTransformerImpl
-import com.mikepenz.markdown.compose.Markdown
-import com.mikepenz.markdown.m3.markdownColor
-import com.mikepenz.markdown.m3.markdownTypography
 import dev.henriquehorbovyi.blog.components.ProgressIndicator
-import dev.henriquehorbovyi.blog.theme.BlogTheme
+import dev.henriquehorbovyi.blog.theme.BlogMarkdown
+import dev.henriquehorbovyi.blog.theme.BlogMarkdownColorStyle
 import dev.henriquehorbovyi.blog.viewmodel.postdetails.PostDetailUiState
 
 @Composable
@@ -44,12 +41,8 @@ fun PostDetailPage(
 private fun Content(uiState: PostDetailUiState.Content, handleOpenExternalLink: () -> Unit) {
     val content = uiState.model.content.trimIndent()
 
-    Markdown(
+    BlogMarkdown(
         content = content,
-        colors = markdownColor(),
-        typography = markdownTypography(
-            h1 = BlogTheme.typography.displayLarge,
-        ),
-        imageTransformer = Coil3ImageTransformerImpl
+        colorStyle = BlogMarkdownColorStyle.Default
     )
 }

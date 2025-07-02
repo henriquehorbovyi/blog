@@ -32,7 +32,20 @@ val BlogAppTypography: Typography
             fontSize = 42.sp,
             lineHeight = 64.sp,
             letterSpacing = (-0.25).sp,
-            color = BlogTheme.colorScheme.onPrimary
+        ),
+        displayMedium = TextStyle(
+            fontFamily = BlogAppFontFamily,
+            fontWeight = FontWeight.Bold,
+            fontSize = 34.sp,
+            lineHeight = 56.sp,
+            letterSpacing = 0.sp,
+        ),
+        displaySmall = TextStyle(
+            fontFamily = BlogAppFontFamily,
+            fontWeight = FontWeight.Bold,
+            fontSize = 24.sp,
+            lineHeight = 48.sp,
+            letterSpacing = 0.sp,
         ),
         headlineLarge = TextStyle(
             fontFamily = BlogAppFontFamily,

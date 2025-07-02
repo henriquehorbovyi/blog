@@ -17,8 +17,5 @@ data class PostPreview(
 
 @Serializable
 data class PostContent(
-    val id: String,
-    val title: String,
     val content: String,
-    val publishedAt: String
 )
