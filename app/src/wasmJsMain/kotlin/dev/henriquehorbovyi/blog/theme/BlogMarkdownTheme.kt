@@ -1,16 +1,25 @@
 package dev.henriquehorbovyi.blog.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mikepenz.markdown.compose.MarkdownElement
+import com.mikepenz.markdown.compose.components.CurrentComponentsBridge.heading3
 import com.mikepenz.markdown.compose.components.markdownComponents
+import com.mikepenz.markdown.compose.elements.MarkdownDivider
+import com.mikepenz.markdown.compose.elements.MarkdownHeader
 import com.mikepenz.markdown.compose.elements.MarkdownHighlightedCodeBlock
 import com.mikepenz.markdown.compose.elements.MarkdownHighlightedCodeFence
+import com.mikepenz.markdown.compose.elements.MarkdownParagraph
+import com.mikepenz.markdown.compose.elements.MarkdownText
+import com.mikepenz.markdown.compose.elements.material.MarkdownBasicText
 import com.mikepenz.markdown.m3.Markdown
 import com.mikepenz.markdown.m3.markdownColor
 import com.mikepenz.markdown.m3.markdownTypography
@@ -135,6 +144,13 @@ fun BlogMarkdown(
         colors = colors,
         typography = BlogMarkdownTheme.typography(),
         components = markdownComponents(
+            paragraph = {
+                MarkdownParagraph(
+                    content = it.content,
+                    node = it.node,
+                    modifier = Modifier.padding(bottom = 10.dp),
+                )
+            },
             codeBlock = {
                 MarkdownHighlightedCodeBlock(
                     content = it.content,
