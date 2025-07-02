@@ -11,7 +11,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 > _"The little things? The little moments? They aren't little." — Jon Kabat-Zinn_
 
-[image](https://static1.srcdn.com/wordpress/wp-content/uploads/2019/07/futurama-shut-up-and-take-my-money.jpg)
+![image](https://static1.srcdn.com/wordpress/wp-content/uploads/2019/07/futurama-shut-up-and-take-my-money.jpg)
 
 <img src='https://static1.srcdn.com/wordpress/wp-content/uploads/2019/07/futurama-shut-up-and-take-my-money.jpg' width='200px'/>
 
