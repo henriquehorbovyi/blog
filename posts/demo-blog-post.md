@@ -1,5 +1,6 @@
 # Demo blog post - H1 will be my title 
 ###### Jun 29, 2025 ☕
+#### 
 Note that the date above will be a H6 
 ## H3 will represent big topics
 There's something `magical` ✨ about those quiet moments that slip by unnoticed in our busy lives. You know the ones I'm talking about—the first sip of morning coffee, the way sunlight filters through your `window`, or that satisfying feeling when you finally organize your desk just right.
