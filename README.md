@@ -1,4 +1,4 @@
-# Blog (🚧 WIP ⚠️)
+# Blog (🚧 WIP)
 
 ### Visit
 https://henriquehorbovyi.github.io/blog/
