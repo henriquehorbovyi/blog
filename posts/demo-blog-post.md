@@ -1,6 +1,5 @@
 # Demo blog post - H1 will be my title 
 ###### Jun 29, 2025 ☕
-<div style="margin-bottom: 200px;"></div>
 
 Note that the date above will be a H6 
 
