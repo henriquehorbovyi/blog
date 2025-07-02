@@ -3,8 +3,11 @@
 
 Note that the date above will be a H6 
 
-## H3 will represent topics inside my post
+## H3 will represent big topics
 There's something `magical` ✨ about those quiet moments that slip by unnoticed in our busy lives. You know the ones I'm talking about—the first sip of morning coffee, the way sunlight filters through your `window`, or that satisfying feeling when you finally organize your desk just right.
+
+#### This is a small topic
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
 
 > "The little things? The little moments? They aren't little." — Jon Kabat-Zinn
 
