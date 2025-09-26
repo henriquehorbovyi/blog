@@ -25,9 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.input.pointer.DummyPointerIcon
 import androidx.compose.ui.input.pointer.PointerIcon
-import androidx.compose.ui.input.pointer.PointerInputFilter
 import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.unit.dp
 import composeresources.generated.resources.Res

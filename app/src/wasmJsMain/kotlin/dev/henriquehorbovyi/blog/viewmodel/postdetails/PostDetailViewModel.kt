@@ -2,7 +2,6 @@ package dev.henriquehorbovyi.blog.viewmodel.postdetails
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dev.henriquehorbovyi.blog.data.repository.BlogRepository
 import dev.henriquehorbovyi.blog.data.repository.IBlogRepository
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

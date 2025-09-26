@@ -1,7 +1,6 @@
 package dev.henriquehorbovyi.blog.viewmodel.postdetails
 
 import dev.henriquehorbovyi.blog.data.PostContent
-import dev.henriquehorbovyi.blog.navigation.Page
 
 interface PostDetailUiState {
     object Loading : PostDetailUiState

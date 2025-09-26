@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import dev.henriquehorbovyi.blog.data.repository.IBlogRepository
 import dev.henriquehorbovyi.blog.navigation.ExternalNavigator
 import dev.henriquehorbovyi.blog.navigation.Page
-import dev.henriquehorbovyi.blog.viewmodel.PostNavigationEvent
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update

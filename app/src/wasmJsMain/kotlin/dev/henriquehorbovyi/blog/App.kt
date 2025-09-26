@@ -49,7 +49,7 @@ import dev.henriquehorbovyi.blog.ui.HomePageContent
 import dev.henriquehorbovyi.blog.ui.PostDetailPage
 import dev.henriquehorbovyi.blog.viewmodel.posts.IPostsViewModel
 import dev.henriquehorbovyi.blog.viewmodel.posts.PostAction
-import dev.henriquehorbovyi.blog.viewmodel.PostNavigationEvent
+import dev.henriquehorbovyi.blog.viewmodel.posts.PostNavigationEvent
 import dev.henriquehorbovyi.blog.viewmodel.postdetails.IPostDetailViewModel
 import dev.henriquehorbovyi.blog.viewmodel.postdetails.PostDetailAction
 import dev.henriquehorbovyi.blog.viewmodel.postdetails.PostDetailUiState

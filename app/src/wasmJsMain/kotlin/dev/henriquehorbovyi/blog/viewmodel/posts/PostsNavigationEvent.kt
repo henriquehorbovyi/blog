@@ -1,4 +1,4 @@
-package dev.henriquehorbovyi.blog.viewmodel
+package dev.henriquehorbovyi.blog.viewmodel.posts
 
 import dev.henriquehorbovyi.blog.navigation.Page
 
