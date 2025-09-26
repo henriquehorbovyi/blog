@@ -2,16 +2,13 @@ package dev.henriquehorbovyi.blog.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import composeresources.generated.resources.Res
 import composeresources.generated.resources.jetbrains_mono
 import composeresources.generated.resources.noto_color_emoji
-import composeresources.generated.resources.roboto
 import org.jetbrains.compose.resources.Font
 
 val BlogAppFontFamily: FontFamily

@@ -51,9 +51,7 @@ class BlogApiClient {
         val response: HttpResponse = httpClient.get(postsEndpoint.plus(fileName))
         val content = response.bodyAsText()
         // TODO, think about a way to add id, title, publishedAt or PostContent carries only the content itself
-        return PostContent(
-            content = content,
-        )
+        return PostContent( content = content)
     }
 
 }
