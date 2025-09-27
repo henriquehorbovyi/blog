@@ -16,11 +16,11 @@ sealed class Page(val urlRoute: String) {
 
     companion object {
         fun urlToPage(url: String): Page {
-            val route = url.ifEmpty { Page.Home.urlRoute }.substringAfter("#")
+            val route = url.ifEmpty { Home.urlRoute }.substringAfter("#")
             val blogPostRegex = Regex("^blog/.+")
             val page =  when {
-                route == "home" -> Page.Home
-                route == "blog" -> Page.Blog
+                route == "home" -> Home
+                route == "blog" -> Blog
                 blogPostRegex.matches(route) -> { // Use the regex
                     val file = route.substringAfter("blog/")
                     PostDetail(file)
