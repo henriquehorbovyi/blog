@@ -3,7 +3,7 @@ package dev.henriquehorbovyi.blog.viewmodel.postdetails
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.henriquehorbovyi.blog.data.repository.IBlogRepository
-import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -12,7 +12,7 @@ class PostDetailViewModel(
     private val repository: IBlogRepository
 ) : ViewModel(), IPostDetailViewModel {
 
-    override val navigation = MutableSharedFlow<PostDetailNavigationEvent>(extraBufferCapacity = 1)
+    override val navigation = Channel<PostDetailNavigationEvent>()
     override val uiState = MutableStateFlow<PostDetailUiState>(PostDetailUiState.Loading)
 
     override fun onAction(action: PostDetailAction) {
@@ -30,8 +30,7 @@ class PostDetailViewModel(
                 val postDetail = repository.getPostByFileName(fileName)
                 PostDetailUiState.Content(postDetail)
             } catch (e: Exception) {
-                PostDetailUiState.Error(e.message ?: "Error")
-
+                PostDetailUiState.Error(e.message ?: "Something went wrong")
             }
             uiState.update { state }
         }

@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import dev.henriquehorbovyi.blog.components.ErrorState
 import dev.henriquehorbovyi.blog.components.ProgressIndicator
 import dev.henriquehorbovyi.blog.theme.BlogMarkdown
 import dev.henriquehorbovyi.blog.theme.BlogMarkdownColorStyle
@@ -16,7 +17,6 @@ fun PostDetailPage(
     fileName: String,
     uiState: PostDetailUiState,
     loadPostContent: (String) -> Unit,
-    handleOpenExternalLink: () -> Unit = {},
 ) {
     LaunchedEffect(Unit) {
         loadPostContent(fileName)
@@ -28,17 +28,17 @@ fun PostDetailPage(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         when (uiState) {
+            is PostDetailUiState.Error -> ErrorState(message = uiState.message)
             is PostDetailUiState.Loading -> ProgressIndicator()
             is PostDetailUiState.Content -> Content(
                 uiState = uiState,
-                handleOpenExternalLink = handleOpenExternalLink
             )
         }
     }
 }
 
 @Composable
-private fun Content(uiState: PostDetailUiState.Content, handleOpenExternalLink: () -> Unit) {
+private fun Content(uiState: PostDetailUiState.Content) {
     val content = uiState.model.content.trimIndent()
 
     BlogMarkdown(

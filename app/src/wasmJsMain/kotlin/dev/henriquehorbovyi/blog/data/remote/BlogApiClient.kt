@@ -13,6 +13,7 @@ import io.ktor.client.request.get
 import io.ktor.client.statement.HttpResponse
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.ContentType
+import io.ktor.http.HttpStatusCode
 import io.ktor.serialization.kotlinx.KotlinxSerializationConverter
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
@@ -49,9 +50,11 @@ class BlogApiClient {
 
     suspend fun getPost(fileName: String): PostContent {
         val response: HttpResponse = httpClient.get(postsEndpoint.plus(fileName))
-        val content = response.bodyAsText()
         // TODO, think about a way to add id, title, publishedAt or PostContent carries only the content itself
-        return PostContent( content = content)
+        when (response.status) {
+            HttpStatusCode.NotFound -> throw IllegalArgumentException("post not found!")
+            HttpStatusCode.OK -> return PostContent(content = response.bodyAsText())
+            else -> throw IllegalStateException("something went wrong: ${response.status}")
+        }
     }
-
 }

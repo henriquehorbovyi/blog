@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.dp
 import dev.henriquehorbovyi.blog.theme.BlogTheme
 
 @Composable
-fun BlogPageContent(
+fun BlogPage(
     blogPostsContent: @Composable () -> Unit
 ) {
 

@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -45,8 +44,9 @@ import dev.henriquehorbovyi.blog.navigation.Page.Blog
 import dev.henriquehorbovyi.blog.navigation.Page.Home
 import dev.henriquehorbovyi.blog.navigation.Page.PostDetail
 import dev.henriquehorbovyi.blog.theme.BlogTheme
-import dev.henriquehorbovyi.blog.ui.BlogPageContent
-import dev.henriquehorbovyi.blog.ui.HomePageContent
+import dev.henriquehorbovyi.blog.ui.BlogPage
+import dev.henriquehorbovyi.blog.ui.HomePage
+import dev.henriquehorbovyi.blog.ui.NotFoundPage
 import dev.henriquehorbovyi.blog.ui.PostDetailPage
 import dev.henriquehorbovyi.blog.viewmodel.posts.IPostsViewModel
 import dev.henriquehorbovyi.blog.viewmodel.posts.PostAction
@@ -173,9 +173,7 @@ fun Content(
                         onPageChange = { onEvent(PostAction.PageChanged(it)) }
                     )
 
-                    Column(
-                        modifier = Modifier
-                    ) {
+                    Column(modifier = Modifier) {
                         SelectionContainer {
                             NavHost(
                                 startDestination = startDestination,
@@ -184,7 +182,7 @@ fun Content(
                                 exitTransition = { fadeOut(animationSpec = tween(0)) },
                             ) {
                                 composable<Home> {
-                                    HomePageContent(
+                                    HomePage(
                                         modifier = Modifier.fillMaxWidth(),
                                         blogPostsContent = {
                                             BlogPosts(
@@ -197,7 +195,7 @@ fun Content(
                                     )
                                 }
                                 composable<Blog> {
-                                    BlogPageContent(blogPostsContent = {
+                                    BlogPage(blogPostsContent = {
                                         BlogPosts(
                                             postsUiState = uiState,
                                             onPostClicked = { file ->
@@ -216,15 +214,7 @@ fun Content(
                                         },
                                     )
                                 }
-                                composable<Page.NotFound> {
-                                    Column(
-                                        modifier = Modifier.fillMaxSize(),
-                                        horizontalAlignment = Alignment.CenterHorizontally,
-                                        verticalArrangement = Arrangement.Center
-                                    ) {
-                                        Text("404...")
-                                    }
-                                }
+                                composable<Page.NotFound> { NotFoundPage() }
                             }
                         }
                     }

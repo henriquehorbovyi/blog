@@ -93,17 +93,3 @@ fun EmptyState(modifier: Modifier = Modifier) {
         )
     }
 }
-
-@Composable
-fun ErrorState(modifier: Modifier = Modifier, message: String) {
-    Box(
-        modifier = modifier.fillMaxWidth(),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = message,
-            style = BlogTheme.typography.bodyLarge,
-            color = BlogTheme.colorScheme.error
-        )
-    }
-}
