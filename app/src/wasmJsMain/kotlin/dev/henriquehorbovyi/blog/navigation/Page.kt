@@ -9,26 +9,35 @@ import kotlinx.serialization.Serializable
 sealed class Page(val urlRoute: String) {
     @Serializable
     object Home : Page("#home")
+
     @Serializable
     object Blog : Page("#blog")
+
     @Serializable
     data class PostDetail(var file: String) : Page("#blog/$file")
 
+    @Serializable
+    object NotFound : Page("#404")
+
     companion object {
         fun urlToPage(url: String): Page {
-            val route = url.ifEmpty { Home.urlRoute }.substringAfter("#")
-            val blogPostRegex = Regex("^blog/.+")
-            val page =  when {
-                route == "home" -> Home
-                route == "blog" -> Blog
-                blogPostRegex.matches(route) -> { // Use the regex
+            // if there's no # in the url the original url string is returned.
+            val clearedRoute = url.substringAfter("#")
+            if (clearedRoute.isEmpty() || clearedRoute == url) return Home
+
+            // route = #home, #blog etc...
+            val route = "#$clearedRoute"
+            val blogPostRegex = Regex("^#blog/.+")
+
+            return when {
+                route == Home.urlRoute -> Home
+                route == Blog.urlRoute -> Blog
+                blogPostRegex.matches(route) -> {
                     val file = route.substringAfter("blog/")
                     PostDetail(file)
                 }
-
-                else -> Home
+                else -> NotFound
             }
-            return page
         }
     }
 }
@@ -42,7 +51,8 @@ fun NavBackStackEntry.mapToUrlRoute(): String {
         route.startsWith(Page.PostDetail.serializer().descriptor.serialName) -> {
             Page.PostDetail(toRoute<Page.PostDetail>().file).urlRoute
         }
+        route.startsWith(Page.NotFound.serializer().descriptor.serialName) -> Page.NotFound.urlRoute
 
-        else -> Page.Home.urlRoute
+        else -> Page.NotFound.urlRoute
     }
 }

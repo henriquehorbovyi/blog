@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -72,8 +73,10 @@ fun App(
 
     postsViewModel.navigation.observeWithLifecycle { event ->
         when (event) {
-            is PostNavigationEvent.NavigateToPage -> navController.navigate(event.page)
-            is PostNavigationEvent.OpenBlogPost -> navController.navigate(PostDetail(event.blogPostFileName))
+            is PostNavigationEvent.NavigateToPage -> navController.navigate(event.page) {
+                launchSingleTop = true
+                restoreState = true
+            }
         }
     }
 
@@ -203,20 +206,24 @@ fun Content(
                                         )
                                     })
                                 }
-
                                 composable<PostDetail> { backStackEntry ->
                                     val file = backStackEntry.toRoute<PostDetail>().file
                                     PostDetailPage(
                                         fileName = file,
                                         uiState = postDetailUiState,
                                         loadPostContent = {
-                                            onPostDetailEvent(
-                                                PostDetailAction.LoadPostDetail(
-                                                    it
-                                                )
-                                            )
+                                            onPostDetailEvent(PostDetailAction.LoadPostDetail(it))
                                         },
                                     )
+                                }
+                                composable<Page.NotFound> {
+                                    Column(
+                                        modifier = Modifier.fillMaxSize(),
+                                        horizontalAlignment = Alignment.CenterHorizontally,
+                                        verticalArrangement = Arrangement.Center
+                                    ) {
+                                        Text("404...")
+                                    }
                                 }
                             }
                         }

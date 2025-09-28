@@ -3,6 +3,7 @@ package dev.henriquehorbovyi.blog
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.window.ComposeViewport
 import androidx.navigation.ExperimentalBrowserHistoryApi
+import androidx.navigation.NavController
 import androidx.navigation.bindToNavigation
 import dev.henriquehorbovyi.blog.data.repository.BlogRepository
 import dev.henriquehorbovyi.blog.navigation.ExternalNavigator
@@ -13,6 +14,7 @@ import dev.henriquehorbovyi.blog.viewmodel.posts.BlogPostsViewModel
 import kotlinx.browser.document
 import kotlinx.browser.window
 import kotlinx.serialization.ExperimentalSerializationApi
+import org.w3c.dom.PopStateEvent
 
 @OptIn(
     ExperimentalComposeUiApi::class, ExperimentalBrowserHistoryApi::class,
@@ -24,9 +26,18 @@ fun main() {
         val externalNavigator = ExternalNavigator(window)
         val postsViewModel = BlogPostsViewModel(repository, externalNavigator)
         val postDetailsViewModel = PostDetailViewModel(repository)
+        var navController: NavController? = null
+
+        window.addEventListener("popstate") { event ->
+            if (event is PopStateEvent) {
+                navController?.navigate(Page.urlToPage(window.location.toString()))
+            }
+        }
+
         App(
             startDestination = Page.urlToPage(document.URL),
-            onNavHostReady = { navController ->
+            onNavHostReady = { nav ->
+                navController = nav
                 window.bindToNavigation(
                     navController = navController,
                     getBackStackEntryRoute = { it.mapToUrlRoute() }
